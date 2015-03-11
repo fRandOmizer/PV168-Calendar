@@ -11,9 +11,16 @@ import java.util.List;
 /**
  * Created by Richard on 8. 3. 2015.
  */
+
+// METODA CHANGEMONTH BY MALA STALE VRACAT POLE ALE PRAZDNE
+
 public class CalendarManager implements CalendarManagerInterface {
     @Override
     public List<Day> ChangeMonth(Year year, Month month) {
+        return null;
+    }
+    @Override
+    public List<Note> getNotesForDay(Day day) {
         return null;
     }
     @Override
