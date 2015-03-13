@@ -11,8 +11,8 @@ import java.util.List;
  * Created by Richard on 8. 3. 2015.
  */
 public interface CalendarManagerInterface {
-    public List<Day> ChangeMonth(Year year,Month month);
-    public void AddNoteToDay(Day day, Note note);
-    public void EditNoteToDay(Day day, Note note);
-    public void DeleteNoteToDay(Day day, Note note);
+    public List<Day> changeMonth(Year year, Month month);
+    public void addNoteToDay(Day day, Note note);
+    public void editNoteToDay(Day day, Note note);
+    public void deleteNoteToDay(Day day, Note note);
 }

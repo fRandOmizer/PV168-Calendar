@@ -7,15 +7,15 @@ import Interfaces.CalendarDescriptionManagerInterface;
  */
 public class CalendarDescriptionManager implements CalendarDescriptionManagerInterface {
     @Override
-    public void CreateDescription(String text){
+    public void createDescription(String text){
 
     }
     @Override
-    public void EditDescription(String text){
+    public void editDescription(String text){
 
     }
     @Override
-    public String GetDescription()
+    public String getDescription()
     {
         return null;
     }

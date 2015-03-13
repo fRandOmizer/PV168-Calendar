@@ -18,6 +18,7 @@ public class CalendarDescription {
         CalendarDescription = null;
     }
 
+    //region Equals, hasCode, toString
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,4 +42,5 @@ public class CalendarDescription {
                 "CalendarDescription='" + CalendarDescription + '\'' +
                 '}';
     }
+    //endregion
 }

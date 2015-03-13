@@ -13,19 +13,19 @@ import java.util.List;
  */
 public class CalendarManager implements CalendarManagerInterface {
     @Override
-    public List<Day> ChangeMonth(Year year, Month month) {
+    public List<Day> changeMonth(Year year, Month month) {
         return null;
     }
     @Override
-    public void AddNoteToDay(Day day, Note note){
+    public void addNoteToDay(Day day, Note note){
 
     }
     @Override
-    public void EditNoteToDay(Day day, Note note){
+    public void editNoteToDay(Day day, Note note){
 
     }
     @Override
-    public void DeleteNoteToDay(Day day, Note note){
+    public void deleteNoteToDay(Day day, Note note){
 
     }
 }

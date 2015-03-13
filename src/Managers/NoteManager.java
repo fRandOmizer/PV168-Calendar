@@ -11,23 +11,23 @@ import java.util.List;
  */
 public class NoteManager implements NoteManagerInterface {
     @Override
-    public void AddNote(Note note) {
+    public void addNote(Note note) {
 
     }
     @Override
-    public void EditNote(Note note){
+    public void editNote(Note note){
 
     }
     @Override
-    public void DeleteNote(Note note){
+    public void deleteNote(Note note){
 
     }
     @Override
-    public List<Note> FindByDate(Date date){
+    public List<Note> findByDate(Date date){
         return null;
     }
     @Override
-    public Note FindByID(Integer ID){
+    public Note findByID(Integer ID){
         return null;
     }
 

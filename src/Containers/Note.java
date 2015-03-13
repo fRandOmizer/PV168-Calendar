@@ -13,45 +13,55 @@ public class Note {
     private Date date;
     private boolean IsDone;
 
+    //region Get
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getSubject() {
         return Subject;
     }
 
-    public void setSubject(String subject) {
-        Subject = subject;
-    }
-
     public String getDescription() {
         return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public boolean isDone() {
         return IsDone;
+    }
+    //endregion
+
+    //region Set
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setSubject(String subject) {
+        Subject = subject;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setDone(boolean isDone) {
         IsDone = isDone;
     }
+
+    public void setNote(String Subject, String Description, Date date) {
+        this.Subject = Subject;
+        this.Description = Description;
+        this.date = date;
+    }
+    //endregion
 
     public Note() {
         this.ID = 0;
@@ -61,6 +71,7 @@ public class Note {
         Subject = null;
     }
 
+    //region Equals, hashCode, toString
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,7 +79,6 @@ public class Note {
 
         Note note = (Note) o;
 
-        if (ID != note.ID) return false;
         if (IsDone != note.IsDone) return false;
         if (!Description.equals(note.Description)) return false;
         if (!Subject.equals(note.Subject)) return false;
@@ -79,8 +89,7 @@ public class Note {
 
     @Override
     public int hashCode() {
-        int result = ID;
-        result = 31 * result + Subject.hashCode();
+        int result = Subject.hashCode();
         result = 31 * result + Description.hashCode();
         result = 31 * result + date.hashCode();
         result = 31 * result + (IsDone ? 1 : 0);
@@ -97,4 +106,5 @@ public class Note {
                 ", IsDone=" + IsDone +
                 '}';
     }
+    //endregion
 }
