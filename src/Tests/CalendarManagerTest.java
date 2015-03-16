@@ -65,22 +65,27 @@ public class CalendarManagerTest {
 
         calendarManager.AddNoteToDay(null,null);
         list = calendarManager.ChangeMonth(year, month);
+        assertNotNull(list);
         assertEquals(0, list.size());
 
         calendarManager.AddNoteToDay(null,note);
         list = calendarManager.ChangeMonth(year, month);
+        assertNotNull(list);
         assertEquals(0, list.size());
 
         calendarManager.AddNoteToDay(day,null);
         list = calendarManager.ChangeMonth(year, month);
+        assertNotNull(list);
         assertEquals(0, list.size());
 
         calendarManager.AddNoteToDay(day,note);
         list = calendarManager.ChangeMonth(year, month);
+        assertNotNull(list);
         assertEquals(1, list.size());
         assertEquals(list.get(0), day);
 
         List<Note> notes = calendarManager.getNotesForDay(day);
+        assertNotNull(notes);
         assertEquals(1, notes.size());
         assertEquals(notes.get(0), note);
     }
@@ -99,10 +104,12 @@ public class CalendarManagerTest {
 
         calendarManager.AddNoteToDay(day,note);
         list = calendarManager.ChangeMonth(year, month);
+        assertNotNull(list);
         assertEquals(1, list.size());
         assertEquals(list.get(0), day);
 
         List<Note> notes = calendarManager.getNotesForDay(day);
+        assertNotNull(notes);
         assertEquals(1, notes.size());
         assertEquals(notes.get(0), note);
 
@@ -127,15 +134,18 @@ public class CalendarManagerTest {
 
         calendarManager.AddNoteToDay(day,note);
         list = calendarManager.ChangeMonth(year, month);
-        assertEquals(1, list.size());
+        assertNotNull(list);
+        assertEquals(new Integer(1), new Integer(list.size()));
         assertEquals(list.get(0), day);
 
         List<Note> notes = calendarManager.getNotesForDay(day);
-        assertEquals(1, notes.size());
+        assertNotNull(notes);
+        assertEquals(new Integer(1), new Integer(notes.size()));
         assertEquals(notes.get(0), note);
 
         calendarManager.DeleteNoteToDay(day, note);
         notes = calendarManager.getNotesForDay(day);
-        assertEquals(0, notes.size());
+        assertNotNull(notes);
+        assertEquals(new Integer(0), new Integer(notes.size()));
     }
 }
