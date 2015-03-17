@@ -24,7 +24,7 @@ public class CalendarManager implements CalendarManagerInterface {
         return null;
     }
     @Override
-    public void AddNoteToDay(Day day, Note note){
+    public void addNoteToDay(Day day, Note note){
 
     }
     @Override

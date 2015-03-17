@@ -22,17 +22,17 @@ public class NoteManagerTest {
     @Test
     public void testAddNote() throws Exception {
         try {
-            noteManager.AddNote(null);
+            noteManager.addNote(null);
         }
         catch (Exception ex) {
             //OK
         }
         Note note = new Note();
-        noteManager.AddNote(note);
-        List<Note> list = noteManager.FindByDate(new Date());
+        noteManager.addNote(note);
+        List<Note> list = noteManager.findByDate(new Date());
         assertEquals(1, list.size());
-        noteManager.DeleteNote(note);
-        list = noteManager.FindByDate(new Date());
+        noteManager.deleteNote(note);
+        list = noteManager.findByDate(new Date());
         assertEquals(0, list.size());
     }
 
@@ -44,22 +44,22 @@ public class NoteManagerTest {
     @Test
     public void testDeleteNote() throws Exception {
         try {
-            noteManager.DeleteNote(null);
+            noteManager.deleteNote(null);
         }
         catch (Exception ex) {
             //OK
         }
         Note note = new Note();
-        noteManager.AddNote(note);
-        noteManager.DeleteNote(note);
-        List<Note> list = noteManager.FindByDate(new Date());
+        noteManager.addNote(note);
+        noteManager.deleteNote(note);
+        List<Note> list = noteManager.findByDate(new Date());
         assertEquals(0, list.size());
     }
 
     @Test
     public void testFindByDate() throws Exception {
         try {
-            noteManager.FindByDate(null);
+            noteManager.findByDate(null);
         }
         catch (Exception ex) {
             //OK
@@ -67,18 +67,18 @@ public class NoteManagerTest {
         Date date = new Date(2000);
         Note note = new Note();
         note.setDate(date);
-        noteManager.AddNote(note);
-        List<Note> list = noteManager.FindByDate(new Date());
+        noteManager.addNote(note);
+        List<Note> list = noteManager.findByDate(new Date());
         assertEquals(0, list.size());
-        list = noteManager.FindByDate(date);
+        list = noteManager.findByDate(date);
         assertEquals(1, list.size());
-        noteManager.DeleteNote(note);
+        noteManager.deleteNote(note);
     }
 
     @Test
     public void testFindByID() throws Exception {
         try {
-            noteManager.FindByID(null);
+            noteManager.findByID(null);
         }
         catch (Exception ex) {
             //OK
@@ -88,13 +88,13 @@ public class NoteManagerTest {
         Note note2 = new Note();
         note2.setID(20);
         note2.setSubject("test");
-        noteManager.AddNote(note);
-        noteManager.AddNote(note2);
-        Note returnedNote = noteManager.FindByID(2);
+        noteManager.addNote(note);
+        noteManager.addNote(note2);
+        Note returnedNote = noteManager.findByID(2);
         assertNull(returnedNote);
-        returnedNote = noteManager.FindByID(10);
+        returnedNote = noteManager.findByID(10);
         assertEquals(note, returnedNote);
-        returnedNote = noteManager.FindByID(20);
+        returnedNote = noteManager.findByID(20);
         assertEquals(note2, returnedNote);
     }
 }

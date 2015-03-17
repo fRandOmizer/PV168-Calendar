@@ -20,16 +20,16 @@ public class DayManagerTest {
     @Test
     public void testCreateDay() throws Exception {
         try {
-            dayManager.CreateDay(null);
+            dayManager.createDay(null);
         }
         catch (Exception ex) {
             //OK
         }
-        dayManager.CreateDay(new Date());
-        Day day = dayManager.FindByDay(new Date());
+        dayManager.createDay(new Date());
+        Day day = dayManager.findByDay(new Date());
         assertNotNull(day);
-        dayManager.DeleteDay(day);
-        day = dayManager.FindByDay(new Date());
+        dayManager.deleteDay(day);
+        day = dayManager.findByDay(new Date());
         assertNull(day);
     }
 
@@ -41,28 +41,28 @@ public class DayManagerTest {
     @Test
     public void testDeleteDay() throws Exception {
         try {
-            dayManager.DeleteDay(null);
+            dayManager.deleteDay(null);
         }
         catch (Exception ex) {
             //OK
         }
-        dayManager.CreateDay(new Date());
-        Day day = dayManager.FindByDay(new Date());
-        dayManager.DeleteDay(day);
-        day = dayManager.FindByDay(new Date());
+        dayManager.createDay(new Date());
+        Day day = dayManager.findByDay(new Date());
+        dayManager.deleteDay(day);
+        day = dayManager.findByDay(new Date());
         assertNull(day);
     }
 
     @Test
     public void testFindByDay() throws Exception {
         try {
-            dayManager.FindByDay(null);
+            dayManager.findByDay(null);
         }
         catch (Exception ex) {
             //OK
         }
-        dayManager.CreateDay(new Date());
-        Day day = dayManager.FindByDay(new Date());
+        dayManager.createDay(new Date());
+        Day day = dayManager.findByDay(new Date());
         assertEquals(day.getIDDate(),new Date());
     }
 }

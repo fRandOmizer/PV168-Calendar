@@ -23,36 +23,36 @@ public class CalendarDescriptionManagerTest {
 
     @Test
     public void testCreateDescription() throws Exception {
-        assertNull(calendarDescriptionManager.GetDescription());        //DESCRIPTION HAS TO BE NULL ON BEGINNING
+        assertNull(calendarDescriptionManager.getDescription());        //DESCRIPTION HAS TO BE NULL ON BEGINNING
 
-        calendarDescriptionManager.CreateDescription(null);             //THIS HAS TO CRASH WITH EXCEPTION
-        assertNull(calendarDescriptionManager.GetDescription());
+        calendarDescriptionManager.createDescription(null);             //THIS HAS TO CRASH WITH EXCEPTION
+        assertNull(calendarDescriptionManager.getDescription());
 
         String text = "Description";
-        calendarDescriptionManager.CreateDescription(text);
-        assertNotNull(calendarDescriptionManager.GetDescription());
-        assertEquals(text, calendarDescriptionManager.GetDescription());//DESCRIPTION IS SET
+        calendarDescriptionManager.createDescription(text);
+        assertNotNull(calendarDescriptionManager.getDescription());
+        assertEquals(text, calendarDescriptionManager.getDescription());//DESCRIPTION IS SET
     }
 
     @Test
     public void testEditDescription() throws Exception {
         String text = "Description";
-        calendarDescriptionManager.CreateDescription(text);
+        calendarDescriptionManager.createDescription(text);
 
         String anotherText = "Another text";
-        calendarDescriptionManager.EditDescription(anotherText);
-        assertEquals(anotherText, calendarDescriptionManager.GetDescription());
+        calendarDescriptionManager.editDescription(anotherText);
+        assertEquals(anotherText, calendarDescriptionManager.getDescription());
 
-        calendarDescriptionManager.EditDescription(null);
-        assertNull(calendarDescriptionManager.GetDescription());
+        calendarDescriptionManager.editDescription(null);
+        assertNull(calendarDescriptionManager.getDescription());
     }
 
     @Test
     public void testGetDescription() throws Exception {
-        assertNull(calendarDescriptionManager.GetDescription());
+        assertNull(calendarDescriptionManager.getDescription());
         String text = "Description";
-        calendarDescriptionManager.CreateDescription(text);
-        assertNotNull(calendarDescriptionManager.GetDescription());
-        assertEquals(text, calendarDescriptionManager.GetDescription());//DESCRIPTION IS SET
+        calendarDescriptionManager.createDescription(text);
+        assertNotNull(calendarDescriptionManager.getDescription());
+        assertEquals(text, calendarDescriptionManager.getDescription());//DESCRIPTION IS SET
     }
 }
