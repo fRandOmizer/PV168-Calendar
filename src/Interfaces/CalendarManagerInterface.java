@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface CalendarManagerInterface {
     public List<Day> ChangeMonth(Year year,Month month);
+    public List<Note> getNotesForDay(Day day);
     public void AddNoteToDay(Day day, Note note);
     public void EditNoteToDay(Day day, Note note);
     public void DeleteNoteToDay(Day day, Note note);
