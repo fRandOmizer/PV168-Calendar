@@ -9,9 +9,9 @@ import java.util.List;
  * Created by Richard on 8. 3. 2015.
  */
 public interface NoteManagerInterface {
-    public void AddNote(Note note);
-    public void EditNote(Note note);
-    public void DeleteNote(Note note);
-    public List<Note> FindByDate(Date date);
-    public Note FindByID(Integer ID);
+    public void addNote(Note note);
+    public void editNote(Note note);
+    public void deleteNote(Note note);
+    public List<Note> findByDate(Date date);
+    public Note findByID(Integer ID);
 }

@@ -9,7 +9,7 @@ package Interfaces;
 // DESCRIPTION
 
 public interface CalendarDescriptionManagerInterface {
-    public void CreateDescription(String text);
-    public void EditDescription(String text);
-    public String GetDescription();
+    public void createDescription(String text);
+    public void editDescription(String text);
+    public String getDescription();
 }

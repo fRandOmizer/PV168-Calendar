@@ -11,20 +11,20 @@ import java.util.Date;
 public class DayManager implements DayManagerInterface {
     //Mohlo by to rovno vracat Day
     @Override
-    public void CreateDay(Date date){
+    public void createDay(Date date){
 
     }
     @Override
-    public void EditDay(Day day){
+    public void editDay(Day day){
 
     }
     @Override
-    public void DeleteDay(Day day){
+    public void deleteDay(Day day){
 
     }
     //Premenovat na FindByDate
     @Override
-    public Day FindByDay(Date day){
+    public Day findByDay(Date day){
         return  null;
     }
 }

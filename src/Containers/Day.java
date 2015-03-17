@@ -14,29 +14,36 @@ public class Day {
     private int NumberOfNotes;
     private int NumberOfFinishedNotes;
 
+    //region getter
     public int getNumberOfFinishedNotes() {
         return NumberOfFinishedNotes;
-    }
-
-    public void setNumberOfFinishedNotes(int numberOfFinishedNotes) {
-        NumberOfFinishedNotes = numberOfFinishedNotes;
     }
 
     public int getNumberOfNotes() {
         return NumberOfNotes;
     }
 
-    public void setNumberOfNotes(int numberOfNotes) {
-        NumberOfNotes = numberOfNotes;
-    }
-
     public Date getIDDate() {
         return IDDate;
     }
+    //endregion
 
-    public void setIDDate(Date IDDate) {
-        this.IDDate = IDDate;
+    //region setters
+    public void setDay(Date IDDate, int NumberOfNotes, int NumberOfFinishedNotes)
+    {
+        this.IDDate= IDDate;
+        this.NumberOfNotes = NumberOfNotes;
+        this.NumberOfFinishedNotes = NumberOfFinishedNotes;
     }
+
+    public void setNumberOfFinishedNotes(int numberOfFinishedNotes) {
+        NumberOfFinishedNotes = numberOfFinishedNotes;
+    }
+
+    public void setNumberOfNotes(int numberOfNotes) {
+        NumberOfNotes = numberOfNotes;
+    }
+    //endregion
 
     public Day() {
         IDDate = new Date();
@@ -44,7 +51,7 @@ public class Day {
         NumberOfFinishedNotes = 0;
     }
 
-
+    //region Equals, hashCode, toString
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,4 +82,5 @@ public class Day {
                 ", NumberOfFinishedNotes=" + NumberOfFinishedNotes +
                 '}';
     }
+    //endregion
 }
