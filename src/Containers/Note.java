@@ -1,20 +1,20 @@
 package Containers;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by Richard on 8. 3. 2015.
  */
 public class Note {
 
-    private int ID;
+    private Integer ID;
     private String Subject;
     private String Description;
     private Date date;
     private boolean IsDone;
 
     //region Get
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
@@ -36,7 +36,7 @@ public class Note {
     //endregion
 
     //region Set
-    public void setID(int ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
@@ -64,11 +64,11 @@ public class Note {
     //endregion
 
     public Note() {
-        this.ID = 0;
+        this.ID = null;
         IsDone = false;
-        this.date = new Date();
-        Description = null;
-        Subject = null;
+        this.date = new Date(1970,1,1);
+        Description = new String("");
+        Subject = new String("");
     }
 
     //region Equals, hashCode, toString

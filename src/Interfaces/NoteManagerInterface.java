@@ -2,7 +2,7 @@ package Interfaces;
 
 import Containers.Note;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**

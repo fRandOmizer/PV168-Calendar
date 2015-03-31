@@ -23,15 +23,17 @@ public class CalendarDescriptionManagerTest {
 
     @Test
     public void testCreateDescription() throws Exception {
-        assertNull(calendarDescriptionManager.getDescription());        //DESCRIPTION HAS TO BE NULL ON BEGINNING
-
-        calendarDescriptionManager.createDescription(null);             //THIS HAS TO CRASH WITH EXCEPTION
+        try {
+            calendarDescriptionManager.createDescription(null);
+        }
+        catch(Exception ex) {
+            //OK
+        }
         assertNull(calendarDescriptionManager.getDescription());
 
         String text = "Description";
         calendarDescriptionManager.createDescription(text);
-        assertNotNull(calendarDescriptionManager.getDescription());
-        assertEquals(text, calendarDescriptionManager.getDescription());//DESCRIPTION IS SET
+        assertEquals(text, calendarDescriptionManager.getDescription());
     }
 
     @Test
@@ -52,7 +54,9 @@ public class CalendarDescriptionManagerTest {
         assertNull(calendarDescriptionManager.getDescription());
         String text = "Description";
         calendarDescriptionManager.createDescription(text);
-        assertNotNull(calendarDescriptionManager.getDescription());
-        assertEquals(text, calendarDescriptionManager.getDescription());//DESCRIPTION IS SET
+        assertEquals(text, calendarDescriptionManager.getDescription());
+
+        calendarDescriptionManager.editDescription(null);
+        assertNull(calendarDescriptionManager.getDescription());
     }
 }
