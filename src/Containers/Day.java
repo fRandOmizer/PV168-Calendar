@@ -4,7 +4,8 @@ package Containers;
  * Created by Richard on 8. 3. 2015.
  */
 
-import java.util.Date;
+
+import java.sql.Date;
 
 /**
  * Created by Richard on 8. 3. 2015.
@@ -46,7 +47,8 @@ public class Day {
     //endregion
 
     public Day() {
-        IDDate = new Date();
+        java.util.Date date = new java.util.Date();
+        IDDate = new java.sql.Date(date.getTime());
         NumberOfNotes = 0;
         NumberOfFinishedNotes = 0;
     }

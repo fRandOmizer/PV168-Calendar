@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component inherit-compiler-output="true" inheritJdk="true">
+<component inherit-compiler-output="true">
 	<output-test url="file://$MODULE_DIR$/out/test/PV168-Calendar"/>
 	<exclude-output/>
-	<contentEntry url="file://$MODULE_DIR$"/>
-	<levels>
-		<level name="hamcrest-core-1.3" value="project"/>
-	</levels>
 </component>

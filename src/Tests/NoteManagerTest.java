@@ -1,8 +1,8 @@
 package Tests;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import Containers.Note;
 import Managers.NoteManager;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class NoteManagerTest {
 
@@ -25,7 +26,7 @@ public class NoteManagerTest {
         BasicDataSource bds = new BasicDataSource();
         bds.setUrl("jdbc:postgresql://localhost:5432/PV168");
         bds.setDriverClassName("org.postgresql.Driver");
-        bds.setUsername("PV168");
+        bds.setUsername("postgres");
         bds.setPassword("PV168");
         this.dataSource = bds;
         //create new empty table before every test
@@ -44,6 +45,7 @@ public class NoteManagerTest {
     public void tearDown() throws SQLException {
         try (Connection con = dataSource.getConnection()) {
             con.prepareStatement("DROP TABLE note").executeUpdate();
+            con.close();
         }
     }
 

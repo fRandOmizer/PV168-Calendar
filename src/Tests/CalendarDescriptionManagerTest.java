@@ -1,24 +1,45 @@
 package Tests;
 
 import Managers.CalendarDescriptionManager;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.sql.DataSource;
+
+import java.sql.Connection;
 
 import static org.junit.Assert.*;
 
 public class CalendarDescriptionManagerTest {
 
     private CalendarDescriptionManager calendarDescriptionManager;
+    private DataSource dataSource;
 
     @Before
     public void setUp() throws Exception {
-        calendarDescriptionManager = new CalendarDescriptionManager();
+        BasicDataSource bds = new BasicDataSource();
+        bds.setUrl("jdbc:postgresql://localhost:5432/PV168");
+        bds.setDriverClassName("org.postgresql.Driver");
+        bds.setUsername("postgres");
+        bds.setPassword("PV168");
+        this.dataSource = bds;
+        //create new empty table before every test
+        try (Connection conn = bds.getConnection()) {
+            conn.prepareStatement("CREATE TABLE calendardescription ("
+                    + "description TEXT,"
+                    + "\"date\" DATE)").executeUpdate();
+        }
+        calendarDescriptionManager = new CalendarDescriptionManager(dataSource);
     }
 
     @After
     public void tearDown() throws Exception {
-
+        try (Connection con = dataSource.getConnection()) {
+            con.prepareStatement("DROP TABLE calendardescription").executeUpdate();
+            con.close();
+        }
     }
 
     @Test
@@ -55,7 +76,6 @@ public class CalendarDescriptionManagerTest {
         String text = "Description";
         calendarDescriptionManager.createDescription(text);
         assertEquals(text, calendarDescriptionManager.getDescription());
-
         calendarDescriptionManager.editDescription(null);
         assertNull(calendarDescriptionManager.getDescription());
     }

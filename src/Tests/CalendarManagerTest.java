@@ -2,11 +2,17 @@ package Tests;
 
 import Containers.Day;
 import Containers.Note;
+import Managers.CalendarDescriptionManager;
 import Managers.CalendarManager;
+import Managers.DayManager;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.sql.DataSource;
+import java.io.Console;
+import java.sql.Connection;
 import java.time.Month;
 import java.time.Year;
 import java.util.Calendar;
@@ -17,15 +23,70 @@ import static org.junit.Assert.*;
 public class CalendarManagerTest {
 
     private CalendarManager calendarManager;
-
+    private DataSource dataSourceNote;
+    private DataSource dataSourceDay;
+    private DataSource dataSourceDescription;
     @Before
     public void setUp() throws Exception {
-        calendarManager = new CalendarManager();
+        BasicDataSource bds = new BasicDataSource();
+        bds.setUrl("jdbc:postgresql://localhost:5432/PV168");
+        bds.setDriverClassName("org.postgresql.Driver");
+        bds.setUsername("postgres");
+        bds.setPassword("PV168");
+        this.dataSourceNote = bds;
+        //create new empty table before every test
+        try (Connection conn = bds.getConnection()) {
+            conn.prepareStatement("CREATE TABLE note ("
+                    + "id SERIAL,"
+                    + "subject TEXT,"
+                    + "description TEXT,"
+                    + "\"date\" DATE,"
+                    + "is_done BOOLEAN)").executeUpdate();
+        }
+
+        bds = new BasicDataSource();
+        bds.setUrl("jdbc:postgresql://localhost:5432/PV168");
+        bds.setDriverClassName("org.postgresql.Driver");
+        bds.setUsername("postgres");
+        bds.setPassword("PV168");
+        this.dataSourceDay = bds;
+        //create new empty table before every test
+        try (Connection conn = bds.getConnection()) {
+            conn.prepareStatement("CREATE TABLE day ("
+                    + "numberOfFinishedNotes INTEGER,"
+                    + "numberOfNotes INTEGER,"
+                    + "\"date\" DATE)").executeUpdate();
+        }
+
+        bds = new BasicDataSource();
+        bds.setUrl("jdbc:postgresql://localhost:5432/PV168");
+        bds.setDriverClassName("org.postgresql.Driver");
+        bds.setUsername("postgres");
+        bds.setPassword("PV168");
+        this.dataSourceDescription = bds;
+        //create new empty table before every test
+        try (Connection conn = bds.getConnection()) {
+            conn.prepareStatement("CREATE TABLE calendardescription ("
+                    + "description TEXT,"
+                    + "\"date\" DATE)").executeUpdate();
+        }
+        calendarManager = new CalendarManager(dataSourceDay,dataSourceDescription,dataSourceNote);
     }
 
     @After
     public void tearDown() throws Exception {
-
+       try (Connection con = dataSourceDay.getConnection()) {
+            con.prepareStatement("DROP TABLE day").executeUpdate();
+           con.close();
+        }
+        try (Connection con = dataSourceDescription.getConnection()) {
+            con.prepareStatement("DROP TABLE calendardescription").executeUpdate();
+            con.close();
+        }
+        try (Connection con = dataSourceNote.getConnection()) {
+            con.prepareStatement("DROP TABLE note").executeUpdate();
+            con.close();
+        }
     }
 
     @Test
@@ -34,7 +95,7 @@ public class CalendarManagerTest {
         Year year = Year.of(c.get(Calendar.YEAR));
         Month month = Month.of(c.get(Calendar.MONTH));
         List<Day> list = calendarManager.changeMonth(year, month);
-        assertNull(list);
+        assertEquals(0, list.size());
 
         Day day = new Day();
         Note note = new Note();
@@ -47,7 +108,7 @@ public class CalendarManagerTest {
         assertEquals(1, list.size());
 
         list = calendarManager.changeMonth(Year.of(c.get(Calendar.YEAR) - 1), month);
-        assertNull(list);
+        assertEquals(0, list.size());
     }
 
     @Test

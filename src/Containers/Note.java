@@ -1,6 +1,7 @@
 package Containers;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by Richard on 8. 3. 2015.
@@ -66,7 +67,11 @@ public class Note {
     public Note() {
         this.ID = null;
         IsDone = false;
-        this.date = new Date(1970,1,1);
+        Calendar cal = Calendar.getInstance();
+        cal.set( cal.YEAR,1970 );
+        cal.set( cal.MONTH, 2 );
+        cal.set( cal.DATE, 1 );
+        this.date = new Date(cal.getTime().getTime());
         Description = new String("");
         Subject = new String("");
     }
